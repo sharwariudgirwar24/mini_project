@@ -1,0 +1,876 @@
+/* -------------------------------------------------------------------------- */
+/*                                  Variables                                 */
+/* -------------------------------------------------------------------------- */
+:root {
+    /* Colors */
+    --bg-color: #FAFAFF;
+    /* Very faint indigo tint */
+    --surface-color: #FFFFFF;
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    /* Indigo 500 to Indigo 600 */
+    --primary-gradient-hover: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+    /* Indigo 600 to Indigo 700 */
+    --secondary-gradient: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+    /* Purple accent */
+
+    --text-heading: #1e1b4b;
+    /* Indigo 950 */
+    --text-body: #475569;
+    /* Slate 600 */
+    --text-light: #f8fafc;
+
+    --border-color: #e0e7ff;
+    /* Indigo 100 */
+
+    /* Effects */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(67 56 202 / 0.1), 0 2px 4px -2px rgb(67 56 202 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(67 56 202 / 0.1), 0 4px 6px -4px rgb(67 56 202 / 0.1);
+    --shadow-hover: 0 20px 25px -5px rgb(67 56 202 / 0.15), 0 8px 10px -6px rgb(67 56 202 / 0.15);
+
+    --radius-sm: 0.375rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-full: 9999px;
+
+    /* Typography */
+    --font-main: 'Outfit', sans-serif;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    Reset                                   */
+/* -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-heading);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Utilities                                 */
+/* -------------------------------------------------------------------------- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--primary-gradient-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.4);
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #1e293b, #475569);
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* -webkit-text-fill-color: transparent; Removed to keep "Business" dark but stylized if needed,
+       but user requested "Digital Market" as green gradient.
+       Let's stick to user request strictly. */
+}
+
+/* Specific text gradient for "Digital Market" */
+.text-gradient-primary {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Navbar                                   */
+/* -------------------------------------------------------------------------- */
+.navbar {
+    padding: 1.25rem 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background: transparent;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: center;
+    /* Centered as per hero request implies centered nav logo usually, or left-logo right-links.
+                               User said "Logo badge at top center" logic implies logo is part of hero.
+                               The user requested "Logo badge at top center" in Hero Section.
+                               So I'll keep navbar simple or minimal.
+                               Actually, user put "Logo badge" IN Hero Section list.
+                               I will center the logo in the nav, or just leave nav empty and put logo in hero.
+                               I will put a minimal Logo in nav top-left or center for standard practice,
+                               BUT the "Logo badge" in hero is specific.
+                               Let's center the logo in the nav just in case. */
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-heading);
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4f46e5;
+    box-shadow: var(--shadow-sm);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Hero Section                                */
+/* -------------------------------------------------------------------------- */
+.hero {
+    position: relative;
+    padding: 8rem 0 6rem 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+}
+
+/* Logo Badge Requirement at Top Center */
+.badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(99, 102, 241, 0.1);
+    color: #4338ca;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    /* For the specific "Logo badge... icon + SellSmart" I might have misunderstood.
+       The user said "Logo badge at top center (icon + SellSmart text...)".
+       AND "Small green rounded tagline badge: 'Because every business needs visibility'".
+       So there are TWO badges? Or one?
+       Re-reading:
+       1) Logo badge at top center
+       2) Small green rounded tagline badge
+
+       I will assume the Logo Badge is essentially the Brand Logo, centered.
+       And the tagline badge is below it.
+    */
+}
+
+/* Let's adjust the structure in HTML to match strictly if I can.
+   I used navbar for Logo.
+   I used `.badge-pill` for tagline.
+   This works well for "Logo at top" (Nav) and "Tagline badge".
+*/
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--text-heading);
+    letter-spacing: -0.02em;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-body);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+}
+
+/* Abstract Blobs */
+.blob {
+    position: absolute;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.blob-1 {
+    width: 400px;
+    height: 400px;
+    background: #e0e7ff;
+    /* Indigo 100 */
+    top: -100px;
+    left: -100px;
+    border-radius: 50%;
+}
+
+.blob-2 {
+    width: 300px;
+    height: 300px;
+    background: #ede9fe;
+    /* Violet 100 */
+    bottom: -50px;
+    right: -50px;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Features Section                              */
+/* -------------------------------------------------------------------------- */
+.features-section {
+    padding: 6rem 0;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+}
+
+.section-badge {
+    display: inline-block;
+    color: #4f46e5;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    background: rgba(99, 102, 241, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-heading);
+}
+
+.section-header p {
+    color: var(--text-body);
+    font-size: 1.125rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.feature-card {
+    background: var(--surface-color);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    background: #e0e7ff;
+    color: #4338ca;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+    background: #c7d2fe;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-heading);
+}
+
+.feature-card p {
+    color: var(--text-body);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             Why Choose Section                             */
+/* -------------------------------------------------------------------------- */
+.why-choose-section {
+    padding: 6rem 0;
+    background: var(--primary-gradient);
+    color: white;
+}
+
+.why-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.why-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.why-text p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    line-height: 1.7;
+    max-width: 500px;
+}
+
+.stats-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 CTA Section                                */
+/* -------------------------------------------------------------------------- */
+.cta-section {
+    padding: 6rem 0;
+    background: #ffffff;
+}
+
+.cta-box {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+    border-radius: 2rem;
+    background: radial-gradient(circle at top right, #eef2ff, #ffffff);
+    border: 1px solid var(--border-color);
+}
+
+.cta-box h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-heading);
+}
+
+.cta-box p {
+    font-size: 1.125rem;
+    color: var(--text-body);
+    margin-bottom: 2rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Footer                                   */
+/* -------------------------------------------------------------------------- */
+.footer {
+    background: #0f172a;
+    /* Slate 900 */
+    color: white;
+    padding: 4rem 0 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-brand .logo {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.footer-brand .logo-icon.icon-light {
+    background: rgba(255, 255, 255, 0.1);
+    color: #818cf8;
+}
+
+.tagline {
+    color: #94a3b8;
+    margin-bottom: 3rem;
+}
+
+.footer-copyright {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #1e293b;
+    width: 100%;
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Responsive                                 */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .why-text p {
+        margin: 0 auto 3rem auto;
+    }
+
+    .stats-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .cta-box {
+        padding: 2rem 1rem;
+    }
+
+    /* -------------------------------------------------------------------------- */
+}
+
+/* -------------------------------------------------------------------------- */
+/*                          Simplified Login Page                             */
+/* -------------------------------------------------------------------------- */
+.login-page {
+    /* High Quality Office Background */
+    background: url('https://images.unsplash.com/photo-1497215842964-222b4bef97ed?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1rem;
+}
+
+.login-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Stronger indigo overlay for better text contrast */
+    background: linear-gradient(135deg, rgba(30, 27, 75, 0.85), rgba(49, 46, 129, 0.8));
+    z-index: 1;
+}
+
+.login-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.brand-logo-center {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.brand-logo-center:hover {
+    transform: scale(1.05);
+}
+
+.brand-logo-center .logo-icon {
+    width: 48px;
+    height: 48px;
+    background: white;
+    color: #4f46e5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.98);
+    /* Nearly opaque for readability */
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    width: 100%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Toggles */
+.toggle-container {
+    display: flex;
+    background: #f1f5f9;
+    padding: 0.35rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 2rem;
+}
+
+.toggle-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 0.75rem;
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-body);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.toggle-btn.active {
+    background: white;
+    color: #4f46e5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Forms */
+.auth-form {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.auth-form.active-form {
+    display: block;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-header h3 {
+    font-size: 1.5rem;
+    color: var(--text-heading);
+    margin-bottom: 0.25rem;
+}
+
+.form-header p {
+    font-size: 0.9rem;
+    color: var(--text-body);
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+    margin-left: 0.25rem;
+}
+
+/* Input with Icon */
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: #94a3b8;
+    transition: color 0.3s;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 2.5rem;
+    /* Left padding for icon */
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    background: #f8fafc;
+}
+
+.form-input:focus {
+    border-color: #6366f1;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+}
+
+.form-input:focus+.input-icon,
+.input-icon-wrapper:focus-within .input-icon {
+    color: #6366f1;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+.forgot-link {
+    font-size: 0.85rem;
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.forgot-link:hover {
+    color: #4338ca;
+}
+
+.btn-block {
+    width: 100%;
+    padding: 0.875rem;
+    font-size: 1rem;
+}
+
+.card-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-body);
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1.5rem;
+}
+
+.card-footer a {
+    color: #4f46e5;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.copyright {
+    margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 1.5rem;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Role Selection                               */
+/* -------------------------------------------------------------------------- */
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.role-card {
+    background: #f8fafc;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-body);
+}
+
+.role-card i {
+    font-size: 2.5rem;
+    color: #94a3b8;
+    transition: all 0.3s ease;
+}
+
+.role-card span {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text-heading);
+}
+
+.role-card:hover {
+    background: white;
+    border-color: #6366f1;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.role-card:hover i {
+    color: #6366f1;
+    transform: scale(1.1);
+}
+
+.back-link {
+    background: none;
+    border: none;
+    color: var(--text-body);
+    font-family: var(--font-main);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #4f46e5;
+}
+
+@media (max-width: 600px) {
+    .role-grid {
+        grid-template-columns: 1fr;
+    }
+}

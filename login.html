@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SellSmart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="login-page">
+        <div class="login-overlay"></div>
+
+        <div class="container login-content">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-logo-center">
+                <div class="logo-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <span>SellSmart</span>
+            </a>
+
+            <!-- 1. Role Selection Interface -->
+            <div id="role-selection" class="auth-card">
+                <div class="form-header">
+                    <h3>Welcome to SellSmart</h3>
+                    <p>Select your portal to continue</p>
+                </div>
+
+                <div class="role-grid">
+                    <!-- Business Button -->
+                    <div class="role-card" onclick="showLogin('business')">
+                        <i class="fa-solid fa-building"></i>
+                        <span>Business</span>
+                    </div>
+
+                    <!-- Customer Button -->
+                    <div class="role-card" onclick="showLogin('customer')">
+                        <i class="fa-solid fa-user-tag"></i>
+                        <span>Customer</span>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <p>New to SellSmart? <a href="#">Create an account</a></p>
+                </div>
+            </div>
+
+            <!-- 2. Login Forms Container (Hidden by default) -->
+            <div id="auth-container" class="auth-card hidden">
+                <button onclick="showSelection()" class="back-link">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Selection
+                </button>
+
+                <!-- Business Login Form -->
+                <div id="form-business" class="auth-form">
+                    <div class="form-header">
+                        <h3>Business Login</h3>
+                        <p>Access your business dashboard</p>
+                    </div>
+                    <form onsubmit="event.preventDefault(); window.location.href='dashboard-business.html'">
+                        <div class="form-group">
+                            <label>Business Email</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-regular fa-envelope input-icon"></i>
+                                <input type="email" class="form-input" placeholder="name@company.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-lock input-icon"></i>
+                                <input type="password" class="form-input" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Log In as Business</button>
+                    </form>
+                </div>
+
+                <!-- Customer Login Form -->
+                <div id="form-customer" class="auth-form" style="display: none;">
+                    <div class="form-header">
+                        <h3>Customer Login</h3>
+                        <p>Manage your orders and profile</p>
+                    </div>
+                    <form onsubmit="event.preventDefault(); window.location.href='dashboard-customer.html'">
+                        <div class="form-group">
+                            <label>Email or Phone</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-regular fa-user input-icon"></i>
+                                <input type="text" class="form-input" placeholder="name@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-lock input-icon"></i>
+                                <input type="password" class="form-input" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Log In as Customer</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="copyright">
+                &copy; 2026 SellSmart Inc.
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
