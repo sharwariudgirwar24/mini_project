@@ -178,7 +178,7 @@ img {
 /* -------------------------------------------------------------------------- */
 .hero {
     position: relative;
-    padding: 8rem 0 6rem 0;
+    padding: 8rem 0 3rem 0;
     text-align: center;
     overflow: hidden;
 }
@@ -272,7 +272,7 @@ img {
 /*                              Features Section                              */
 /* -------------------------------------------------------------------------- */
 .features-section {
-    padding: 6rem 0;
+    padding: 3rem 0 6rem 0;
     position: relative;
 }
 

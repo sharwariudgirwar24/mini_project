@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SellSmart</title>
-    <meta name="description" content="Log in to SellSmart. Access your vendor or customer dashboard.">
+    <title>Sign Up - SellSmart</title>
+    <meta name="description"
+        content="Create your SellSmart account. Choose Business or Customer and start growing your micro-business today.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
@@ -55,6 +56,7 @@
             overflow: hidden;
         }
 
+        /* Main gradient */
         .bg-panel::before {
             content: '';
             position: absolute;
@@ -114,7 +116,7 @@
             }
         }
 
-        /* SVG Street Scene */
+        /* SVG scene — Micro-Business Street */
         .scene-svg {
             position: absolute;
             bottom: 0;
@@ -126,7 +128,7 @@
             pointer-events: none;
         }
 
-        /* Floating deco icons */
+        /* Floating icons decoration */
         .deco-icons {
             position: absolute;
             inset: 0;
@@ -205,29 +207,6 @@
             }
         }
 
-        /* ── Back Home Button ── */
-        .back-home-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            font-weight: 600;
-            padding: 0.45rem 1rem;
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.06);
-            transition: background var(--transition), color var(--transition), border-color var(--transition);
-            margin-bottom: 1.4rem;
-        }
-
-        .back-home-btn:hover {
-            background: rgba(79, 70, 229, 0.18);
-            color: var(--text);
-            border-color: rgba(129, 140, 248, 0.45);
-        }
-
         /* ── Layout ── */
         .page-wrapper {
             position: relative;
@@ -279,7 +258,7 @@
         /* ── Card ── */
         .auth-card {
             width: 100%;
-            max-width: 440px;
+            max-width: 480px;
             background: rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -306,7 +285,7 @@
             display: none !important;
         }
 
-        /* ── Role Selection Card ── */
+        /* ── Landing card (role choice) ── */
         .landing-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -347,6 +326,50 @@
             color: var(--text-muted);
         }
 
+        /* Big CTA button */
+        .signup-cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.6rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--indigo), var(--purple));
+            color: #fff;
+            box-shadow: 0 6px 24px rgba(79, 70, 229, 0.45);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .signup-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 34px rgba(79, 70, 229, 0.6);
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--glass-border);
+        }
+
         /* Role cards grid */
         .role-grid {
             display: grid;
@@ -359,12 +382,12 @@
             flex-direction: column;
             align-items: center;
             gap: 0.85rem;
-            padding: 1.8rem 1rem 1.5rem;
+            padding: 2rem 1rem 1.6rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1.5px solid var(--glass-border);
             border-radius: 18px;
             cursor: pointer;
-            transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+            transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -388,10 +411,10 @@
             box-shadow: 0 12px 36px rgba(79, 70, 229, 0.3);
         }
 
-        .role-icon-wrap {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
+        .role-card .role-icon-wrap {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
             background: linear-gradient(135deg, var(--indigo), var(--purple));
             display: flex;
             align-items: center;
@@ -404,46 +427,65 @@
             transform: scale(1.08);
         }
 
-        .role-icon-wrap i {
-            font-size: 1.35rem;
+        .role-card .role-icon-wrap i {
+            font-size: 1.55rem;
             color: #fff;
+            background: none;
+            -webkit-text-fill-color: #fff;
         }
 
-        .role-card>span {
-            font-size: 0.98rem;
+        .role-card span {
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--text);
+            letter-spacing: 0.01em;
         }
 
         .role-card small {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             text-align: center;
             line-height: 1.4;
         }
 
-        .card-footer-text {
+        .role-card .arrow-hint {
+            font-size: 0.78rem;
+            color: var(--indigo-lt);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 0.2rem;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity var(--transition), transform var(--transition);
+        }
+
+        .role-card:hover .arrow-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .already-member {
             text-align: center;
             font-size: 0.88rem;
             color: var(--text-muted);
-            margin-top: 1.6rem;
-            padding-top: 1.4rem;
-            border-top: 1px solid var(--glass-border);
+            margin-top: 1.5rem;
         }
 
-        .card-footer-text a {
+        .already-member a {
             color: var(--indigo-lt);
             text-decoration: none;
             font-weight: 600;
             transition: color var(--transition);
         }
 
-        .card-footer-text a:hover {
+        .already-member a:hover {
             color: #c084fc;
             text-decoration: underline;
         }
 
-        /* ── Login Forms ── */
+        /* ── Signup Forms ── */
         .form-card-header {
             display: flex;
             align-items: center;
@@ -478,7 +520,6 @@
         .form-title h3 {
             font-size: 1.35rem;
             font-weight: 700;
-            color: var(--text);
         }
 
         .form-title p {
@@ -499,7 +540,7 @@
             text-transform: uppercase;
         }
 
-        .role-badge.vendor {
+        .role-badge.business {
             background: rgba(79, 70, 229, 0.25);
             color: var(--indigo-lt);
             border: 1px solid rgba(129, 140, 248, 0.3);
@@ -545,7 +586,6 @@
             font-size: 0.9rem;
             pointer-events: none;
             transition: color var(--transition);
-            z-index: 1;
         }
 
         .form-input {
@@ -571,33 +611,30 @@
             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
         }
 
+        .form-input:focus+i,
         .input-wrap:focus-within i {
             color: var(--indigo-lt);
         }
 
-        /* Forgot link */
-        .forgot-row {
-            display: flex;
-            justify-content: flex-end;
+        /* Swap icon order so icon is in the dom BEFORE input for :focus-within */
+        .input-wrap i {
+            order: 0;
         }
 
-        .forgot-link {
-            font-size: 0.82rem;
-            color: var(--indigo-lt);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition);
+        .form-input {
+            order: 1;
         }
 
-        .forgot-link:hover {
-            color: #c084fc;
+        /* Re-do: icon BEFORE input */
+        .input-wrap {
+            flex-direction: row;
         }
 
         /* Submit button */
         .submit-btn {
             width: 100%;
             padding: 0.9rem;
-            margin-top: 0.3rem;
+            margin-top: 0.5rem;
             border: none;
             border-radius: 12px;
             cursor: pointer;
@@ -607,7 +644,7 @@
             background: linear-gradient(135deg, var(--indigo), var(--purple));
             color: #fff;
             box-shadow: 0 6px 22px rgba(79, 70, 229, 0.4);
-            transition: transform var(--transition), box-shadow var(--transition);
+            transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -621,6 +658,46 @@
 
         .submit-btn:active {
             transform: translateY(0);
+        }
+
+        /* Terms */
+        .terms-text {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .terms-text a {
+            color: var(--indigo-lt);
+            text-decoration: none;
+        }
+
+        .terms-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Back Home Button ── */
+        .back-home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 0.45rem 1rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.06);
+            transition: background var(--transition), color var(--transition), border-color var(--transition);
+            margin-bottom: 1.4rem;
+        }
+
+        .back-home-btn:hover {
+            background: rgba(79, 70, 229, 0.18);
+            color: var(--text);
+            border-color: rgba(129, 140, 248, 0.45);
         }
 
         /* Copyright */
@@ -649,6 +726,7 @@
 
     <!-- Background -->
     <div class="bg-panel">
+        <!-- Blobs -->
         <div class="blob blob-a"></div>
         <div class="blob blob-b"></div>
         <div class="blob blob-c"></div>
@@ -667,34 +745,71 @@
 
         <!-- SVG Micro-Business Street Scene -->
         <svg class="scene-svg" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Sky/ground base -->
             <rect x="0" y="200" width="1440" height="120" fill="rgba(79,70,229,0.15)" rx="0" />
+
+            <!-- Building 1 -->
             <rect x="50" y="100" width="100" height="120" fill="rgba(124,58,237,0.45)" rx="6" />
             <rect x="60" y="115" width="25" height="30" fill="rgba(255,255,255,0.15)" rx="3" />
             <rect x="100" y="115" width="25" height="30" fill="rgba(255,255,255,0.15)" rx="3" />
+            <rect x="60" y="160" width="25" height="30" fill="rgba(255,255,255,0.15)" rx="3" />
+            <rect x="100" y="160" width="25" height="30" fill="rgba(255,255,255,0.15)" rx="3" />
+            <!-- Sign -->
             <rect x="55" y="88" width="90" height="18" fill="rgba(99,102,241,0.7)" rx="4" />
+
+            <!-- Building 2 (coffee shop) -->
             <rect x="180" y="130" width="120" height="90" fill="rgba(109,40,217,0.55)" rx="6" />
             <rect x="195" y="150" width="35" height="45" fill="rgba(255,255,255,0.12)" rx="3" />
+            <rect x="248" y="150" width="35" height="45" fill="rgba(255,255,255,0.12)" rx="3" />
             <rect x="180" y="118" width="120" height="16" fill="rgba(129,140,248,0.6)" rx="4" />
+            <!-- Coffee cup icon approximation -->
+            <ellipse cx="290" cy="180" rx="8" ry="5" fill="rgba(255,255,255,0.3)" />
+
+            <!-- Building 3 (tall) -->
             <rect x="330" y="60" width="80" height="160" fill="rgba(79,70,229,0.5)" rx="6" />
             <rect x="340" y="75" width="20" height="25" fill="rgba(255,255,255,0.15)" rx="2" />
             <rect x="375" y="75" width="20" height="25" fill="rgba(255,255,255,0.15)" rx="2" />
+            <rect x="340" y="115" width="20" height="25" fill="rgba(255,255,255,0.15)" rx="2" />
+            <rect x="375" y="115" width="20" height="25" fill="rgba(255,255,255,0.15)" rx="2" />
+            <rect x="340" y="155" width="20" height="25" fill="rgba(255,255,255,0.15)" rx="2" />
+            <rect x="375" y="155" width="20" height="25" fill="rgba(255,255,255,0.15)" rx="2" />
+
+            <!-- Building 4 (boutique) -->
             <rect x="440" y="110" width="110" height="110" fill="rgba(139,92,246,0.45)" rx="6" />
+            <rect x="453" y="130" width="30" height="50" fill="rgba(255,255,255,0.12)" rx="3" />
+            <rect x="505" y="130" width="30" height="50" fill="rgba(255,255,255,0.12)" rx="3" />
             <rect x="440" y="98" width="110" height="16" fill="rgba(167,139,250,0.6)" rx="4" />
+
+            <!-- Building 5 -->
             <rect x="580" y="80" width="90" height="140" fill="rgba(99,102,241,0.5)" rx="6" />
+            <rect x="590" y="95" width="25" height="30" fill="rgba(255,255,255,0.15)" rx="2" />
+            <rect x="628" y="95" width="25" height="30" fill="rgba(255,255,255,0.15)" rx="2" />
+            <rect x="590" y="140" width="25" height="30" fill="rgba(255,255,255,0.15)" rx="2" />
+            <rect x="628" y="140" width="25" height="30" fill="rgba(255,255,255,0.15)" rx="2" />
+
+            <!-- Right side buildings -->
             <rect x="900" y="120" width="110" height="100" fill="rgba(124,58,237,0.45)" rx="6" />
             <rect x="1040" y="90" width="80" height="130" fill="rgba(79,70,229,0.5)" rx="6" />
             <rect x="1150" y="110" width="130" height="110" fill="rgba(109,40,217,0.45)" rx="6" />
             <rect x="1310" y="130" width="100" height="90" fill="rgba(139,92,246,0.45)" rx="6" />
+
+            <!-- Street -->
             <rect x="0" y="218" width="1440" height="8" fill="rgba(79,70,229,0.3)" />
+            <!-- Street dashes -->
             <rect x="100" y="223" width="60" height="3" fill="rgba(255,255,255,0.12)" rx="2" />
             <rect x="300" y="223" width="60" height="3" fill="rgba(255,255,255,0.12)" rx="2" />
             <rect x="500" y="223" width="60" height="3" fill="rgba(255,255,255,0.12)" rx="2" />
             <rect x="700" y="223" width="60" height="3" fill="rgba(255,255,255,0.12)" rx="2" />
             <rect x="900" y="223" width="60" height="3" fill="rgba(255,255,255,0.12)" rx="2" />
             <rect x="1100" y="223" width="60" height="3" fill="rgba(255,255,255,0.12)" rx="2" />
+            <rect x="1300" y="223" width="60" height="3" fill="rgba(255,255,255,0.12)" rx="2" />
+
+            <!-- Trend arrows / charts floating -->
             <polyline points="700,170 720,155 740,162 760,140 780,145 800,125" stroke="rgba(129,140,248,0.5)"
                 stroke-width="3" fill="none" stroke-linecap="round" />
             <polygon points="800,125 806,138 794,138" fill="rgba(129,140,248,0.5)" />
+
+            <!-- Moon/Stars hint -->
             <circle cx="1380" cy="50" r="18" fill="rgba(255,255,255,0.06)" />
             <circle cx="1370" cy="44" r="14" fill="rgba(15,14,23,0.8)" />
         </svg>
@@ -714,102 +829,158 @@
             <span>SellSmart</span>
         </a>
 
-        <!-- ══ STEP 1: Role Selection ══ -->
-        <div id="card-role" class="auth-card">
+        <!-- ══ STEP 1: Landing card ══ -->
+        <div id="card-landing" class="auth-card">
             <div class="landing-header">
-                <div class="badge"><i class="fa-solid fa-right-to-bracket"></i> Welcome Back</div>
-                <h2>Log in to <span>SellSmart</span></h2>
-                <p>Select your portal to continue.</p>
+                <div class="badge"><i class="fa-solid fa-store"></i> Micro-Business Platform</div>
+                <h2>Join <span>SellSmart</span> Today</h2>
+                <p>Choose how you want to get started on the platform.</p>
             </div>
 
+            <!-- Role cards — two big buttons -->
             <div class="role-grid">
-                <!-- Vendor -->
-                <div class="role-card" onclick="showLogin('business')">
+                <div class="role-card" id="rc-vendor" onclick="showSignup('business')">
                     <div class="role-icon-wrap">
                         <i class="fa-solid fa-store"></i>
                     </div>
-                    <span>Business</span>
-                    <small>Access your business dashboard</small>
+                    <span>Sign up as Vendor</span>
+                    <small>List &amp; sell your products to local customers</small>
+                    <div class="arrow-hint"><i class="fa-solid fa-arrow-right"></i> Get started</div>
                 </div>
-                <!-- Customer -->
-                <div class="role-card" onclick="showLogin('customer')">
+                <div class="role-card" id="rc-customer" onclick="showSignup('customer')">
                     <div class="role-icon-wrap" style="background: linear-gradient(135deg, #7c3aed, #9333ea);">
                         <i class="fa-solid fa-user-tag"></i>
                     </div>
-                    <span>Customer</span>
-                    <small>Manage orders &amp; profile</small>
+                    <span>Sign up as Customer</span>
+                    <small>Shop &amp; discover amazing local stores</small>
+                    <div class="arrow-hint"><i class="fa-solid fa-arrow-right"></i> Get started</div>
                 </div>
             </div>
 
-            <div class="card-footer-text">
-                New to SellSmart? <a href="signup.html">Create an account</a>
-            </div>
+            <p class="already-member">
+                Already have an account? <a href="login.html">Log in here</a>
+            </p>
         </div>
 
-        <!-- ══ STEP 2a: Vendor Login Form ══ -->
+        <!-- ══ STEP 2a: Business Signup Form ══ -->
         <div id="card-business" class="auth-card hidden">
             <div class="form-card-header">
                 <button class="back-btn" onclick="goBack()">
                     <i class="fa-solid fa-arrow-left"></i> Back
                 </button>
                 <div class="form-title">
-                    <h3>Business Login</h3>
-                    <p>Access your business dashboard</p>
+                    <h3>Vendor Sign Up</h3>
+                    <p>Register your micro-business</p>
                 </div>
-                <span class="role-badge vendor"><i class="fa-solid fa-store"></i> Business</span>
+                <span class="role-badge business"><i class="fa-solid fa-store"></i> Vendor</span>
             </div>
 
-            <form onsubmit="handleLogin(event, 'vendor')">
+            <form id="form-business" onsubmit="handleSignup(event, 'business')">
                 <div class="form-grid">
+
                     <div class="form-group">
-                        <label for="v-email">Business Email</label>
+                        <label for="b-name">Full Name</label>
+                        <div class="input-wrap">
+                            <i class="fa-regular fa-user"></i>
+                            <input id="b-name" type="text" class="form-input" placeholder="John Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="b-bname">Business Name</label>
+                        <div class="input-wrap">
+                            <i class="fa-solid fa-store"></i>
+                            <input id="b-bname" type="text" class="form-input" placeholder="My Awesome Store" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="b-email">Business Email</label>
                         <div class="input-wrap">
                             <i class="fa-regular fa-envelope"></i>
-                            <input id="v-email" type="email" class="form-input" placeholder="contact@mystore.com"
+                            <input id="b-email" type="email" class="form-input" placeholder="contact@mystore.com"
                                 required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="v-pass">Password</label>
+                        <label for="b-phone">Mobile Number</label>
                         <div class="input-wrap">
-                            <i class="fa-solid fa-lock"></i>
-                            <input id="v-pass" type="password" class="form-input" placeholder="••••••••" required>
+                            <i class="fa-solid fa-phone"></i>
+                            <input id="b-phone" type="tel" class="form-input" placeholder="+91 98765 43210" required>
                         </div>
                     </div>
 
-                    <div class="forgot-row">
-                        <a href="#" class="forgot-link">Forgot password?</a>
+                    <div class="form-group">
+                        <label for="b-address">Business Address</label>
+                        <div class="input-wrap" style="align-items: flex-start;">
+                            <i class="fa-solid fa-location-dot" style="margin-top: 0.75rem;"></i>
+                            <textarea id="b-address" class="form-input"
+                                placeholder="Shop No. 5, MG Road, Mumbai, Maharashtra 400001" required rows="2"
+                                style="resize: none; padding-top: 0.72rem; line-height: 1.5;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="b-pass">Password</label>
+                        <div class="input-wrap">
+                            <i class="fa-solid fa-lock"></i>
+                            <input id="b-pass" type="password" class="form-input" placeholder="Create a strong password"
+                                required minlength="8">
+                        </div>
                     </div>
 
                     <button type="submit" class="submit-btn">
-                        <i class="fa-solid fa-right-to-bracket"></i>
-                        Log In as Business
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        Create Vendor Account
                     </button>
+
+                    <p class="terms-text">
+                        By signing up, you agree to our
+                        <a href="#">Terms of Service</a> &amp;
+                        <a href="#">Privacy Policy</a>
+                    </p>
                 </div>
             </form>
         </div>
 
-        <!-- ══ STEP 2b: Customer Login Form ══ -->
+        <!-- ══ STEP 2b: Customer Signup Form ══ -->
         <div id="card-customer" class="auth-card hidden">
             <div class="form-card-header">
                 <button class="back-btn" onclick="goBack()">
                     <i class="fa-solid fa-arrow-left"></i> Back
                 </button>
                 <div class="form-title">
-                    <h3>Customer Login</h3>
-                    <p>Manage your orders &amp; profile</p>
+                    <h3>Customer Sign Up</h3>
+                    <p>Create your shopper account</p>
                 </div>
                 <span class="role-badge customer"><i class="fa-solid fa-user-tag"></i> Customer</span>
             </div>
 
-            <form onsubmit="handleLogin(event, 'customer')">
+            <form id="form-customer" onsubmit="handleSignup(event, 'customer')">
                 <div class="form-grid">
+
                     <div class="form-group">
-                        <label for="c-email">Email or Phone</label>
+                        <label for="c-name">Full Name</label>
                         <div class="input-wrap">
                             <i class="fa-regular fa-user"></i>
-                            <input id="c-email" type="text" class="form-input" placeholder="jane@example.com" required>
+                            <input id="c-name" type="text" class="form-input" placeholder="Jane Smith" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c-email">Email Address</label>
+                        <div class="input-wrap">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input id="c-email" type="email" class="form-input" placeholder="jane@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c-phone">Mobile Number</label>
+                        <div class="input-wrap">
+                            <i class="fa-solid fa-phone"></i>
+                            <input id="c-phone" type="tel" class="form-input" placeholder="+91 98765 43210" required>
                         </div>
                     </div>
 
@@ -817,18 +988,21 @@
                         <label for="c-pass">Password</label>
                         <div class="input-wrap">
                             <i class="fa-solid fa-lock"></i>
-                            <input id="c-pass" type="password" class="form-input" placeholder="••••••••" required>
+                            <input id="c-pass" type="password" class="form-input" placeholder="Create a strong password"
+                                required minlength="8">
                         </div>
                     </div>
 
-                    <div class="forgot-row">
-                        <a href="#" class="forgot-link">Forgot password?</a>
-                    </div>
-
                     <button type="submit" class="submit-btn">
-                        <i class="fa-solid fa-right-to-bracket"></i>
-                        Log In as Customer
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        Create Customer Account
                     </button>
+
+                    <p class="terms-text">
+                        By signing up, you agree to our
+                        <a href="#">Terms of Service</a> &amp;
+                        <a href="#">Privacy Policy</a>
+                    </p>
                 </div>
             </form>
         </div>
@@ -838,45 +1012,48 @@
 
     <script>
         const cards = {
-            role: document.getElementById('card-role'),
+            landing: document.getElementById('card-landing'),
             business: document.getElementById('card-business'),
             customer: document.getElementById('card-customer'),
         };
 
+        let previousCard = 'landing';
+
         function showCard(name) {
             Object.values(cards).forEach(c => c.classList.add('hidden'));
             cards[name].classList.remove('hidden');
-            // Restart slide-up animation
+            // Restart animation
             cards[name].style.animation = 'none';
             cards[name].offsetHeight; // reflow
             cards[name].style.animation = '';
         }
 
-        function showLogin(role) {
+        function showSignup(role) {
+            previousCard = 'landing';
             showCard(role);
         }
 
         function goBack() {
-            showCard('role');
+            showCard(previousCard);
         }
 
-        function handleLogin(e, role) {
+        function handleSignup(e, role) {
             e.preventDefault();
             const btn = e.target.querySelector('.submit-btn');
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging in…';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Creating account…';
             btn.disabled = true;
 
+            // Simulate async signup — redirect after 1.5s
             setTimeout(() => {
+                // In production: POST to backend here
                 if (role === 'business') {
-                    window.location.href = 'dashboard-business.html';
+                    window.location.href = 'login.html';
                 } else {
-                    window.location.href = 'dashboard-customer.html';
+                    window.location.href = 'login.html';
                 }
             }, 1500);
         }
     </script>
-
-
 
 </body>
 
